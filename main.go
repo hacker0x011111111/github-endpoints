@@ -269,7 +269,7 @@ func githubSearch(token string, current_search Search, page int) response {
 	var url = fmt.Sprintf("https://api.github.com/search/code?per_page=100&s=%s&type=Code&o=%s&q=%s&page=%d", current_search.sort, current_search.order, search, page )
 	PrintInfos( "debug", url )
 
-	client := http.Client{ Timeout: time.Second * 5 }
+	client := http.Client{ Timeout: time.Second * 30 }
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -313,7 +313,7 @@ func getCode( i item ) string {
 	var raw_url = getRawUrl(i.HtmlUrl)
 	// fmt.Println(raw_url)
 
-	client := http.Client{ Timeout: time.Second * 5 }
+	client := http.Client{ Timeout: time.Second * 30 }
 
 	req, err := http.NewRequest("GET", raw_url, nil)
 	if err != nil {
